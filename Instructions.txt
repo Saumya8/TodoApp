@@ -1,4 +1,3 @@
-
 Set up:
 
 1. Back-end
@@ -10,7 +9,7 @@ Dependencies :
 
 Install Setup Guide:
 
-a. Use Python3 or Install Python 3
+a. Use Python3 or download and install it from python.org.
 
 b. Set up a virtual environment:
   python3 -m venv venv
@@ -96,10 +95,11 @@ frontend/
 │   ├── index.js
 │   ├── components/
 │   │   ├── TodoForm.js
+│   │   └── TodoList.css
 │   │   └── TodoList.js
 ├── package.json
 
 
 
 Testing:
-  On http://localhost:3000, try testing the application using task, Description , Add and Delete butto 
+  On http://localhost:3000, try testing the application using task, Description Add, Edit, and Delete button
