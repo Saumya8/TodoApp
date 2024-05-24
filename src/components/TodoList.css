@@ -1,0 +1,14 @@
+.todo-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .todo-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .todo-text {
+    margin-left: 10px;
+  }
+  

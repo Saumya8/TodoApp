@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './TodoList.css';  // Import the CSS file
 
 const TodoList = ({ todos, updateTodo, deleteTodo }) => {
   const [editIndex, setEditIndex] = useState(null);
@@ -21,9 +22,9 @@ const TodoList = ({ todos, updateTodo, deleteTodo }) => {
   return (
     <ul>
       {todos.map((todo, index) => (
-        <li key={index}>
+        <li key={index} className="todo-item">
           {editIndex === index ? (
-            <div>
+            <div className="todo-buttons">
               <input
                 type="text"
                 value={editTask}
@@ -38,10 +39,10 @@ const TodoList = ({ todos, updateTodo, deleteTodo }) => {
               <button onClick={() => setEditIndex(null)}>Cancel</button>
             </div>
           ) : (
-            <div>
-              <span>{todo.task}: {todo.description}</span>
+            <div className="todo-buttons">
               <button onClick={() => handleEdit(index)}>Edit</button>
               <button onClick={() => deleteTodo(index)}>Delete</button>
+              <span className="todo-text">{todo.task}: {todo.description}</span>
             </div>
           )}
         </li>
