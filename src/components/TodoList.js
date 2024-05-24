@@ -8,6 +8,9 @@ const TodoList = ({ todos, updateTodo, deleteTodo }) => {
   const [editTask, setEditTask] = useState('');
   const [editDescription, setEditDescription] = useState('');
 
+  const maxTaskLength = 50;
+  const maxDescriptionLength = 200;
+
   const handleEdit = (index) => {
     setEditIndex(index);
     setEditTask(todos[index].task);
@@ -35,7 +38,15 @@ const TodoList = ({ todos, updateTodo, deleteTodo }) => {
                 multiline
                 rows={2}
                 variant="outlined"
+                inputProps={{ maxLength: maxTaskLength }}
+                error={editTask.length > maxTaskLength}
+                helperText={`Characters left: ${maxTaskLength - editTask.length}`}
               />
+              {editTask.length > maxTaskLength && (
+                <Typography variant="body2" color="error">
+                  Task exceeds the maximum character limit.
+                </Typography>
+              )}
               <TextField
                 label="Description"
                 value={editDescription}
@@ -44,9 +55,17 @@ const TodoList = ({ todos, updateTodo, deleteTodo }) => {
                 multiline
                 rows={4}
                 variant="outlined"
+                inputProps={{ maxLength: maxDescriptionLength }}
+                error={editDescription.length > maxDescriptionLength}
+                helperText={`Characters left: ${maxDescriptionLength - editDescription.length}`}
               />
+              {editDescription.length > maxDescriptionLength && (
+                <Typography variant="body2" color="error">
+                  Description exceeds the maximum character limit.
+                </Typography>
+              )}
               <Box display="flex" gap={2} justifyContent="flex-end">
-                <Button onClick={() => handleUpdate(index)} variant="contained" color="primary">
+                <Button onClick={() => handleUpdate(index)} variant="contained" color="primary" disabled={editTask.length > maxTaskLength || editDescription.length > maxDescriptionLength}>
                   Update
                 </Button>
                 <Button onClick={() => setEditIndex(null)} variant="contained" color="secondary">
