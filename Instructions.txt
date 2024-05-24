@@ -1,0 +1,105 @@
+
+Set up:
+
+1. Back-end
+
+Dependencies :
+
+ - Python 3
+- Flask and Flask-Cors (for building the back-end API)
+
+Install Setup Guide:
+
+a. Use Python3 or Install Python 3
+
+b. Set up a virtual environment:
+  python3 -m venv venv
+in Linux/MacOS: 
+  source venv/bin/activate
+for Windows: 
+  venv\Scripts\activate
+
+c. Install Flask and Flask-Cors:
+  pip install Flask Flask-Cors
+
+  or run 'pip install -r requirements.txt'
+
+
+d. Create app.py and data.json file
+
+Structure of Backend:
+backend/
+│
+├── app.py
+├── data.json
+├── requirement.txt
+├── venv/
+
+
+
+To Run the application:
+    export FLASK_APP=app.py
+    export FLASK_ENV=development
+    flask run
+
+It will run on "http://127.0.0.1:5000"
+
+To Test, run following curl commands or use POSTMAN:
+
+a. Create a new Item: curl --location 'http://127.0.0.1:5000/todos' --header 'Content-Type: application/json' --data '{  "task": "Task1",  "description": "Create a To do App"}'
+b. Retrieve all items: curl --location 'http://127.0.0.1:5000/todos' 
+c. Update an existing item: curl --location --request PUT 'http://127.0.0.1:5000/todos/0' --header 'Content-Type: application/json' --data '{  "task": "Urgent Task",  "description": "Create a to do app and test it!"}'
+d. Delete an item: curl --location --request DELETE 'http://127.0.0.1:5000/todos/0'
+
+
+
+
+2. Front-end
+
+Dependencies:
+Node.js and npm (Node Package Manager)
+Create React App (for initializing a React project)
+
+
+
+Install Setup Guide:
+
+a. Install Node.js and npm:
+Website: https://nodejs.org/en/download/package-manager
+On linux: sudo apt install nodejs npm
+On MacOS: brew install node
+On Windows: Download the Node.js installer from the official Node.js website, run the prompts 
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    nvm install 20
+
+b. Create a new React application:
+  npx create-react-app todo-app
+  cd todo-app
+
+c. Start React Application:
+  npm start
+
+d. Update app.js file and create Components/
+
+This will  start  development server and open the application in the web browser at http://localhost:3000.
+
+
+
+File Structure beside the default:
+
+frontend/
+│
+├── public/
+│   └── index.html
+├── src/
+│   ├── App.js
+│   ├── index.js
+│   ├── components/
+│   │   ├── TodoForm.js
+│   │   └── TodoList.js
+├── package.json
+
+
+
+Testing:
+  On http://localhost:3000, try testing the application using task, Description , Add and Delete butto 
