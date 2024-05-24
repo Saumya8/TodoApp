@@ -26,18 +26,26 @@ const TodoList = ({ todos, updateTodo, deleteTodo }) => {
       {todos.map((todo, index) => (
         <ListItem key={index} style={{ display: 'flex', alignItems: 'center' }}>
           {editIndex === index ? (
-            <Box display="flex" flexDirection="column" gap={1}>
+            <Box display="flex" flexDirection="column" gap={2} width="100%">
               <TextField
                 label="Task"
                 value={editTask}
                 onChange={(e) => setEditTask(e.target.value)}
+                fullWidth
+                multiline
+                rows={2}
+                variant="outlined"
               />
               <TextField
                 label="Description"
                 value={editDescription}
                 onChange={(e) => setEditDescription(e.target.value)}
+                fullWidth
+                multiline
+                rows={4}
+                variant="outlined"
               />
-              <Box display="flex" gap={1}>
+              <Box display="flex" gap={2} justifyContent="flex-end">
                 <Button onClick={() => handleUpdate(index)} variant="contained" color="primary">
                   Update
                 </Button>
