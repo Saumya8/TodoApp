@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { List, ListItem, ListItemText, IconButton, TextField, Button, Box } from '@mui/material';
+import { List, ListItem, ListItemText, IconButton, TextField, Button, Box, Typography } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -62,7 +62,14 @@ const TodoList = ({ todos, updateTodo, deleteTodo }) => {
               <IconButton onClick={() => deleteTodo(index)}>
                 <DeleteIcon />
               </IconButton>
-              <ListItemText primary={`${todo.task}: ${todo.description}`} />
+              <ListItemText
+                primary={
+                  <Typography variant="body1" style={{ fontWeight: 'bold' }}>
+                    {todo.task}
+                  </Typography>
+                }
+                secondary={todo.description}
+              />
             </>
           )}
         </ListItem>
