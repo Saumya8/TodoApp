@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Container, Typography, Box, Paper } from '@mui/material';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
@@ -57,15 +58,22 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <h1>To-Do List</h1>
-      <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
-    </div>
+    <Container maxWidth="sm">
+      <Box my={4}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          To-Do List
+        </Typography>
+        <Paper elevation={3} style={{ padding: '16px' }}>
+          <TodoForm addTodo={addTodo} />
+          <TodoList todos={todos} updateTodo={updateTodo} deleteTodo={deleteTodo} />
+        </Paper>
+      </Box>
+    </Container>
   );
 }
 
 export default App;
+
 
 
 // import logo from './logo.svg';

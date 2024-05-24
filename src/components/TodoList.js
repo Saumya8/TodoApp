@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import './TodoList.css';  // Import the CSS file
+import { List, ListItem, ListItemText, IconButton, TextField, Button, Box } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const TodoList = ({ todos, updateTodo, deleteTodo }) => {
   const [editIndex, setEditIndex] = useState(null);
@@ -20,34 +22,44 @@ const TodoList = ({ todos, updateTodo, deleteTodo }) => {
   };
 
   return (
-    <ul>
+    <List>
       {todos.map((todo, index) => (
-        <li key={index} className="todo-item">
+        <ListItem key={index} style={{ display: 'flex', alignItems: 'center' }}>
           {editIndex === index ? (
-            <div className="todo-buttons">
-              <input
-                type="text"
+            <Box display="flex" flexDirection="column" gap={1}>
+              <TextField
+                label="Task"
                 value={editTask}
                 onChange={(e) => setEditTask(e.target.value)}
               />
-              <input
-                type="text"
+              <TextField
+                label="Description"
                 value={editDescription}
                 onChange={(e) => setEditDescription(e.target.value)}
               />
-              <button onClick={() => handleUpdate(index)}>Update</button>
-              <button onClick={() => setEditIndex(null)}>Cancel</button>
-            </div>
+              <Box display="flex" gap={1}>
+                <Button onClick={() => handleUpdate(index)} variant="contained" color="primary">
+                  Update
+                </Button>
+                <Button onClick={() => setEditIndex(null)} variant="contained" color="secondary">
+                  Cancel
+                </Button>
+              </Box>
+            </Box>
           ) : (
-            <div className="todo-buttons">
-              <button onClick={() => handleEdit(index)}>Edit</button>
-              <button onClick={() => deleteTodo(index)}>Delete</button>
-              <span className="todo-text">{todo.task}: {todo.description}</span>
-            </div>
+            <>
+              <IconButton onClick={() => handleEdit(index)}>
+                <EditIcon />
+              </IconButton>
+              <IconButton onClick={() => deleteTodo(index)}>
+                <DeleteIcon />
+              </IconButton>
+              <ListItemText primary={`${todo.task}: ${todo.description}`} />
+            </>
           )}
-        </li>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 };
 

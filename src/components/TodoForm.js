@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { TextField, Button, Box } from '@mui/material';
 
 const TodoForm = ({ addTodo }) => {
   const [task, setTask] = useState('');
@@ -27,25 +28,25 @@ const TodoForm = ({ addTodo }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <input
-          type="text"
-          placeholder="Task"
+      <Box display="flex" flexDirection="column" gap={2}>
+        <TextField
+          label="Task"
           value={task}
           onChange={(e) => setTask(e.target.value)}
+          error={!!errors.task}
+          helperText={errors.task}
         />
-        {errors.task && <p>{errors.task}</p>}
-      </div>
-      <div>
-        <input
-          type="text"
-          placeholder="Description"
+        <TextField
+          label="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          error={!!errors.description}
+          helperText={errors.description}
         />
-        {errors.description && <p>{errors.description}</p>}
-      </div>
-      <button type="submit">Add</button>
+        <Button type="submit" variant="contained" color="primary">
+          Add
+        </Button>
+      </Box>
     </form>
   );
 }
