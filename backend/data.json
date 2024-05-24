@@ -8,12 +8,8 @@
         "description": "Create a To do App"
     },
     {
-        "task": "Final Task",
+        "task": "Task towards the end",
         "description": "Make UI Better, Done"
-    },
-    {
-        "task": "H",
-        "description": "Hi\nHello"
     },
     {
         "task": "pyxer | Find the right clothes with AI",
